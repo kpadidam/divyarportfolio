@@ -8,4 +8,11 @@ export default defineConfig({
       '@': '/src',
     },
   },
+  preview: {
+    host: '0.0.0.0',
+    strictPort: false,
+  },
+  server: {
+    host: true,
+  },
 });
