@@ -1,13 +1,19 @@
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Download, Mail, GraduationCap, Briefcase, Code } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export function Resume() {
   return (
     <div className="min-h-[calc(100vh-4rem)]">
       <div className="container px-4 py-16 mx-auto max-w-4xl space-y-12">
         {/* Header */}
-        <div className="text-center space-y-6">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center space-y-6"
+        >
           <h1>Resume</h1>
           <p className="text-lg text-muted-foreground">
             Download my complete resume or view the key highlights below.
@@ -26,10 +32,16 @@ export function Resume() {
               </a>
             </Button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Info */}
-        <Card className="rounded-2xl shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <Card className="rounded-2xl shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Mail className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
@@ -48,8 +60,15 @@ export function Resume() {
             </div>
           </CardContent>
         </Card>
+        </motion.div>
 
         {/* Education */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
         <Card className="rounded-2xl shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -70,8 +89,15 @@ export function Resume() {
             </div>
           </CardContent>
         </Card>
+        </motion.div>
 
         {/* Experience */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
         <Card className="rounded-2xl shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -100,8 +126,15 @@ export function Resume() {
             </div>
           </CardContent>
         </Card>
+        </motion.div>
 
         {/* Skills */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
         <Card className="rounded-2xl shadow-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -130,6 +163,7 @@ export function Resume() {
             </div>
           </CardContent>
         </Card>
+        </motion.div>
       </div>
     </div>
   );

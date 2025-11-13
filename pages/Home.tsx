@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { ArrowRight, Download, Code2, Database, Cloud, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
+import { TypingAnimation } from '../components/TypingAnimation';
 
 export function Home() {
   const floatingAnimation = {
@@ -72,8 +73,8 @@ export function Home() {
         {/* Grid Pattern Overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-        <div className="container relative px-4 py-12 md:py-16 mx-auto max-w-7xl">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className="container relative px-4 py-8 md:py-12 mx-auto max-w-7xl">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
             {/* Animated Heading */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -107,7 +108,14 @@ export function Home() {
               className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto space-y-4"
             >
               <p className="leading-relaxed">
-                I'm a Software Engineer & Full-Stack Developer passionate about crafting seamless digital experiences that merge creativity with technology. With hands-on experience in Java, Spring Boot, React.js, REST APIs, and AWS, I love bringing ideas to life through code — transforming complex problems into elegant, user-friendly solutions.
+                <TypingAnimation
+                  text="I'm a Software Engineer & Full-Stack Developer passionate about crafting seamless digital experiences that merge creativity with technology."
+                  delay={1000}
+                  speed={30}
+                />
+              </p>
+              <p className="leading-relaxed">
+                With hands-on experience in Java, Spring Boot, React.js, REST APIs, and AWS, I love bringing ideas to life through code — transforming complex problems into elegant, user-friendly solutions.
               </p>
               <p className="leading-relaxed">
                 I've worked across the full development lifecycle — from backend architecture and API integration to front-end design and cloud deployment. My journey through graduate research, data analysis, and software projects has taught me the importance of clean code, agile collaboration, and purposeful design.

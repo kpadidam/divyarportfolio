@@ -6,6 +6,7 @@ import { Textarea } from '../components/ui/textarea';
 import { Label } from '../components/ui/label';
 import { Github, Linkedin, Send } from 'lucide-react';
 import { toast } from 'sonner';
+import { motion } from 'motion/react';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -50,15 +51,25 @@ export function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
           {/* Contact Info */}
           <div className="lg:col-span-2 space-y-8">
-            <div className="space-y-4">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-4"
+            >
               <h1>Get In Touch</h1>
               <p className="text-lg text-muted-foreground">
                 I'm always open to discussing new projects, opportunities, or collaborations.
                 Feel free to reach out!
               </p>
-            </div>
+            </motion.div>
 
             <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
               <Card className="rounded-2xl shadow-sm">
                 <CardHeader>
                   <CardTitle className="text-lg">Email</CardTitle>
@@ -72,7 +83,13 @@ export function Contact() {
                   </a>
                 </CardContent>
               </Card>
+              </motion.div>
 
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
               <Card className="rounded-2xl shadow-sm">
                 <CardHeader>
                   <CardTitle className="text-lg">Connect</CardTitle>
@@ -101,11 +118,17 @@ export function Contact() {
                   </div>
                 </CardContent>
               </Card>
+              </motion.div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-3">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-3"
+          >
             <Card className="rounded-2xl shadow-sm">
               <CardHeader>
                 <CardTitle>Send a Message</CardTitle>
@@ -175,7 +198,7 @@ export function Contact() {
                 </form>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

@@ -3,6 +3,73 @@ import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Github, ExternalLink } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { motion } from 'motion/react';
+import { useState } from 'react';
+
+interface CardProps {
+  children: React.ReactNode;
+  index: number;
+}
+
+function Card3D({ children, index }: CardProps) {
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateXValue = ((y - centerY) / centerY) * -10;
+    const rotateYValue = ((x - centerX) / centerX) * 10;
+
+    setRotateX(rotateXValue);
+    setRotateY(rotateYValue);
+  };
+
+  const handleMouseLeave = () => {
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transformStyle: 'preserve-3d',
+        perspective: '1000px',
+      }}
+    >
+      <motion.div
+        animate={{
+          rotateX,
+          rotateY,
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 400,
+          damping: 30,
+        }}
+        style={{
+          transformStyle: 'preserve-3d',
+        }}
+      >
+        {children}
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export function Projects() {
   const projects = [
@@ -54,7 +121,8 @@ export function Projects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <Card3D key={index} index={index}>
+              <Card className="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group h-full">
               <div className="relative overflow-hidden aspect-video">
                 <ImageWithFallback
                   src={project.image}
@@ -93,7 +161,8 @@ export function Projects() {
                   </a>
                 </Button>
               </CardFooter>
-            </Card>
+              </Card>
+            </Card3D>
           ))}
         </div>
       </div>

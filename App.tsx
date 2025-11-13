@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { DarkModeProvider } from './components/DarkModeProvider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -8,22 +8,36 @@ import { Projects } from './pages/Projects';
 import { Resume } from './pages/Resume';
 import { Contact } from './pages/Contact';
 import { Toaster } from './components/ui/sonner';
+import { CursorTrail } from './components/CursorTrail';
+import { PageTransition } from './components/PageTransition';
+import { AnimatePresence } from 'motion/react';
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+        <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
+        <Route path="/resume" element={<PageTransition><Resume /></PageTransition>} />
+        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 export default function App() {
   return (
     <DarkModeProvider>
       <BrowserRouter>
         <div className="flex flex-col min-h-screen">
+          <CursorTrail />
           <Header />
           <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/resume" element={<Resume />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
+            <AnimatedRoutes />
           </main>
           <Footer />
           <Toaster />
