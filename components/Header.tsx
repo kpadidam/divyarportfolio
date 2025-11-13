@@ -28,13 +28,16 @@ export function Header() {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
+                  className={`relative pb-1 transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
                     location.pathname === item.path
-                      ? 'text-indigo-600 dark:text-indigo-400'
+                      ? 'text-indigo-600 dark:text-indigo-400 font-semibold'
                       : 'text-muted-foreground'
                   }`}
                 >
                   {item.label}
+                  {location.pathname === item.path && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 rounded-full" />
+                  )}
                 </Link>
               </li>
             ))}
@@ -63,13 +66,16 @@ export function Header() {
             <li key={item.path}>
               <Link
                 to={item.path}
-                className={`text-sm transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
+                className={`relative pb-1 text-sm transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
                   location.pathname === item.path
-                    ? 'text-indigo-600 dark:text-indigo-400'
+                    ? 'text-indigo-600 dark:text-indigo-400 font-semibold'
                     : 'text-muted-foreground'
                 }`}
               >
                 {item.label}
+                {location.pathname === item.path && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 rounded-full" />
+                )}
               </Link>
             </li>
           ))}

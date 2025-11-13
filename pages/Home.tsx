@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
-import { ArrowRight, Download, Code2, Database, Cloud, Zap } from 'lucide-react';
+import { ArrowRight, Download, Code2, Database, Cloud, Zap, Award, TrendingUp, Briefcase } from 'lucide-react';
 import { motion } from 'motion/react';
 import { TypingAnimation } from '../components/TypingAnimation';
 
@@ -15,10 +15,34 @@ export function Home() {
   };
 
   const techStack = [
-    { icon: Code2, name: 'Full-Stack Dev', color: 'text-indigo-600 dark:text-indigo-400' },
-    { icon: Database, name: 'Databases', color: 'text-emerald-600 dark:text-emerald-400' },
-    { icon: Cloud, name: 'Cloud & AWS', color: 'text-blue-600 dark:text-blue-400' },
-    { icon: Zap, name: 'CI/CD', color: 'text-amber-600 dark:text-amber-400' },
+    {
+      icon: Code2,
+      name: 'Full-Stack Development',
+      description: 'React, Angular, Spring Boot',
+      color: 'text-indigo-600 dark:text-indigo-400',
+      bgColor: 'bg-indigo-100 dark:bg-indigo-950/30'
+    },
+    {
+      icon: Database,
+      name: 'Database Architecture',
+      description: 'MySQL, PostgreSQL, MongoDB',
+      color: 'text-emerald-600 dark:text-emerald-400',
+      bgColor: 'bg-emerald-100 dark:bg-emerald-950/30'
+    },
+    {
+      icon: Cloud,
+      name: 'Cloud & DevOps',
+      description: 'AWS, Docker, Terraform',
+      color: 'text-blue-600 dark:text-blue-400',
+      bgColor: 'bg-blue-100 dark:bg-blue-950/30'
+    },
+    {
+      icon: Zap,
+      name: 'CI/CD Pipeline',
+      description: 'Automation & Deployment',
+      color: 'text-amber-600 dark:text-amber-400',
+      bgColor: 'bg-amber-100 dark:bg-amber-950/30'
+    },
   ];
 
   return (
@@ -86,10 +110,19 @@ export function Home() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
+                className="space-y-3"
               >
-                <h1 className="text-5xl md:text-7xl tracking-tight bg-gradient-to-r from-indigo-600 via-purple-600 to-emerald-600 dark:from-indigo-400 dark:via-purple-400 dark:to-emerald-400 bg-clip-text text-transparent">
-                  Hi Divya here ! 
+                <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-600 via-purple-600 to-emerald-600 dark:from-indigo-400 dark:via-purple-400 dark:to-emerald-400 bg-clip-text text-transparent">
+                  Hi, Divya here!
                 </h1>
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="text-xl md:text-2xl font-semibold text-indigo-600 dark:text-indigo-400"
+                >
+                  Turning Ideas Into Software ✨
+                </motion.p>
               </motion.div>
               {/* <motion.h2
                 initial={{ opacity: 0 }}
@@ -120,24 +153,17 @@ export function Home() {
               <p className="leading-relaxed">
                 I've worked across the full development lifecycle — from backend architecture and API integration to front-end design and cloud deployment. My journey through graduate research, data analysis, and software projects has taught me the importance of clean code, agile collaboration, and purposeful design.
               </p>
-              <p className="font-semibold text-center pt-2">
-                All things dev: Front-End. Back-End. Cloud. CI/CD.<br/>
-                Yep, I build them all.
-              </p>
-              <p className="text-center italic">
-                Let's create applications that don't just work — they wow, scale, and inspire
-              </p>
             </motion.div>
 
             {/* Animated Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
               className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button asChild size="lg" className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all px-8 py-6 text-lg font-bold">
                   <Link to="/projects">
                     View Projects
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -145,7 +171,7 @@ export function Home() {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button asChild size="lg" variant="outline" className="shadow-lg">
+                <Button asChild size="lg" variant="outline" className="shadow-lg hover:shadow-xl border-2 border-indigo-600 dark:border-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-950/30 transition-all px-8 py-6 text-lg font-bold">
                   <a href="/Divya_Resume.pdf" download="Divya_Resume.pdf">
                     <Download className="mr-2 h-5 w-5" />
                     Download Resume
@@ -174,16 +200,19 @@ export function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-background/50 backdrop-blur-sm border border-border/50 shadow-sm hover:shadow-md transition-shadow"
+                whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.2 } }}
+                className="flex flex-col items-center gap-4 p-8 rounded-2xl bg-background border-2 border-border/50 hover:border-indigo-500/50 shadow-lg hover:shadow-2xl transition-all group"
               >
                 <motion.div
                   animate={floatingAnimation}
-                  className={`${tech.color}`}
+                  className={`${tech.bgColor} p-4 rounded-full`}
                 >
-                  <tech.icon className="h-10 w-10" />
+                  <tech.icon className={`h-12 w-12 ${tech.color}`} />
                 </motion.div>
-                <p className="text-center text-muted-foreground">{tech.name}</p>
+                <div className="space-y-2">
+                  <h3 className="text-center font-bold text-lg group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{tech.name}</h3>
+                  <p className="text-center text-sm text-muted-foreground">{tech.description}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -191,13 +220,23 @@ export function Home() {
       </section>
 
       {/* Quick Stats */}
-      <section className="border-t">
+      <section className="border-t bg-gradient-to-b from-background to-muted/30">
         <div className="container px-4 py-16 mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent"
+          >
+            Impact at a Glance
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
             {[
-              { value: '2+', label: 'Years Experience', delay: 0 },
-              { value: '10+', label: 'Projects Completed', delay: 0.2 },
-              { value: '3.63', label: 'GPA', delay: 0.4 },
+              { icon: Briefcase, value: '2+', label: 'Years Experience', delay: 0, color: 'text-indigo-600 dark:text-indigo-400' },
+              { icon: Code2, value: '10+', label: 'Projects Completed', delay: 0.1, color: 'text-emerald-600 dark:text-emerald-400' },
+              { icon: Award, value: '3.63', label: 'GPA', delay: 0.2, color: 'text-amber-600 dark:text-amber-400' },
+              { icon: TrendingUp, value: '15+', label: 'Technologies Mastered', delay: 0.3, color: 'text-purple-600 dark:text-purple-400' },
             ].map((stat) => (
               <motion.div
                 key={stat.label}
@@ -205,19 +244,29 @@ export function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: stat.delay }}
-                whileHover={{ scale: 1.05 }}
-                className="space-y-2 p-6 rounded-2xl hover:bg-muted/50 transition-colors"
+                whileHover={{ y: -5, scale: 1.05 }}
+                className="relative space-y-4 p-8 rounded-2xl bg-background border-2 border-border/50 hover:border-indigo-500/50 shadow-lg hover:shadow-2xl transition-all group overflow-hidden"
               >
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: stat.delay + 0.2 }}
+                  className={`${stat.color} mx-auto w-fit`}
+                >
+                  <stat.icon className="h-10 w-10" />
+                </motion.div>
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1, delay: stat.delay + 0.3 }}
-                  className="text-4xl md:text-5xl bg-gradient-to-r from-indigo-600 to-emerald-600 dark:from-indigo-400 dark:to-emerald-400 bg-clip-text text-transparent"
+                  className="text-5xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-emerald-600 dark:from-indigo-400 dark:to-emerald-400 bg-clip-text text-transparent"
                 >
                   {stat.value}
                 </motion.div>
-                <p className="text-muted-foreground">{stat.label}</p>
+                <p className="text-muted-foreground font-medium">{stat.label}</p>
               </motion.div>
             ))}
           </div>

@@ -10,6 +10,7 @@ import { Contact } from './pages/Contact';
 import { Toaster } from './components/ui/sonner';
 import { CursorTrail } from './components/CursorTrail';
 import { PageTransition } from './components/PageTransition';
+import { ScrollToTop } from './components/ScrollToTop';
 import { AnimatePresence } from 'motion/react';
 
 function AnimatedRoutes() {
@@ -35,6 +36,7 @@ export default function App() {
       <BrowserRouter>
         <div className="flex flex-col min-h-screen">
           <CursorTrail />
+          <ScrollToTop />
           <Header />
           <main className="flex-1">
             <AnimatedRoutes />
