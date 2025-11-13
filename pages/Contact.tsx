@@ -26,12 +26,22 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
+    // Construct mailto link with form data
+    const subject = encodeURIComponent(`Message from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    const mailtoLink = `mailto:dkankanala05@students.cumberland.edu?subject=${subject}&body=${body}`;
+
+    // Open email client
+    window.location.href = mailtoLink;
+
+    // Show success message and reset form
     setTimeout(() => {
-      toast.success('Message sent successfully! I\'ll get back to you soon.');
+      toast.success('Opening your email client...');
       setFormData({ name: '', email: '', message: '' });
       setIsSubmitting(false);
-    }, 1000);
+    }, 500);
   };
 
   return (
@@ -71,7 +81,7 @@ export function Contact() {
                 <CardContent>
                   <div className="flex gap-4">
                     <a
-                      href="https://linkedin.com"
+                      href="https://www.linkedin.com/in/divya-reddy-148a24316"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-muted-foreground hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"

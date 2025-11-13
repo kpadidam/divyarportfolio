@@ -40,7 +40,7 @@ export function Footer() {
             <h4 className="mb-4">Connect</h4>
             <div className="flex gap-4">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/divya-reddy-148a24316"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
